@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sunshine State Weather</title>
+  <meta name="description" content="Retro Florida weather forecasts powered by Open-Meteo. Defaults to Boca Raton, home of FAU." />
+  <meta name="theme-color" content="#1a0b2e" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="grid"></div>
+    <svg class="palm palm-left" viewBox="0 0 200 300"><use href="#palm" /></svg>
+    <svg class="palm palm-right" viewBox="0 0 200 300"><use href="#palm" /></svg>
+  </div>
+
+  <svg class="sprite" width="0" height="0" aria-hidden="true">
+    <symbol id="palm" viewBox="0 0 200 300">
+      <path d="M100 300 C104 230 110 170 104 110" stroke="currentColor" stroke-width="9" fill="none" stroke-linecap="round" />
+      <path d="M104 110 C70 80 35 85 5 110 C40 95 70 100 104 110Z" fill="currentColor" />
+      <path d="M104 110 C80 60 50 45 20 50 C55 60 80 80 104 110Z" fill="currentColor" />
+      <path d="M104 110 C110 60 130 35 160 30 C135 50 118 75 104 110Z" fill="currentColor" />
+      <path d="M104 110 C140 85 170 90 198 115 C165 100 135 100 104 110Z" fill="currentColor" />
+      <path d="M104 110 C130 120 150 145 160 175 C140 150 125 135 104 110Z" fill="currentColor" />
+      <path d="M104 110 C80 125 62 150 55 180 C72 152 88 135 104 110Z" fill="currentColor" />
+    </symbol>
+  </svg>
+
+  <main class="wrap">
+    <header class="masthead">
+      <p class="kicker">Greetings from</p>
+      <h1 class="logo">Sunshine<span>State</span></h1>
+      <p class="tagline">Weather</p>
+    </header>
+
+    <section class="controls" aria-label="Search">
+      <form id="search-form" class="search" role="search" autocomplete="off">
+        <label for="search-input" class="sr-only">Search for a city</label>
+        <input id="search-input" type="search" placeholder="Search a city… (Miami, Key West, Orlando)" />
+        <button type="submit" class="btn btn-pink">Search</button>
+        <ul id="search-results" class="results" role="listbox" hidden></ul>
+      </form>
+      <div class="control-row">
+        <button id="locate-btn" type="button" class="btn btn-teal">📍 My location</button>
+        <button id="boca-btn" type="button" class="btn btn-ghost">🦉 Back to Boca</button>
+        <div class="unit-toggle" role="group" aria-label="Temperature units">
+          <button type="button" data-unit="fahrenheit" class="unit active" aria-pressed="true">°F</button>
+          <button type="button" data-unit="celsius" class="unit" aria-pressed="false">°C</button>
+        </div>
+      </div>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <section id="current" class="card current" aria-label="Current conditions" hidden>
+      <div class="current-head">
+        <h2 id="place-name" class="place"></h2>
+        <p id="local-time" class="muted"></p>
+      </div>
+      <div class="current-body">
+        <div class="big-icon" id="current-icon"></div>
+        <div>
+          <p class="big-temp" id="current-temp"></p>
+          <p class="condition" id="current-desc"></p>
+          <p class="muted" id="current-feels"></p>
+        </div>
+      </div>
+      <dl class="stats">
+        <div><dt>Hi / Lo</dt><dd id="stat-hilo"></dd></div>
+        <div><dt>Humidity</dt><dd id="stat-humidity"></dd></div>
+        <div><dt>Wind</dt><dd id="stat-wind"></dd></div>
+        <div><dt>Rain chance</dt><dd id="stat-precip"></dd></div>
+        <div><dt>UV index</dt><dd id="stat-uv"></dd></div>
+        <div><dt>Sunrise / Sunset</dt><dd id="stat-sun"></dd></div>
+      </dl>
+    </section>
+
+    <section id="hourly-card" class="card" aria-label="Next 24 hours" hidden>
+      <h3 class="section-title">Next 24 hours</h3>
+      <ol id="hourly" class="hourly"></ol>
+    </section>
+
+    <section id="daily-card" class="card" aria-label="7-day forecast" hidden>
+      <h3 class="section-title">7-day forecast</h3>
+      <ol id="daily" class="daily"></ol>
+    </section>
+
+    <footer class="footer">
+      <p>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> (CC BY 4.0) · Made in Boca Raton, FL 🌴</p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
