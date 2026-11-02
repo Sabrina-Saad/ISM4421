@@ -337,3 +337,67 @@ body {
 
 .footer { margin-top: 28px; text-align: center; font-size: 0.85rem; color: var(--muted); }
 .footer a { color: var(--aqua); }
+
+/* ---------- Login ---------- */
+[hidden] { display: none !important; }
+
+.login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+}
+
+.login-card {
+  width: min(100%, 420px);
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.login-copy { margin: 24px 0 16px; color: var(--muted); }
+
+.btn-google {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  color: #1f1f1f;
+  background: #fff;
+  box-shadow: 0 0 14px rgba(125, 249, 255, 0.45);
+}
+.btn-google:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.g-logo { width: 20px; height: 20px; flex: none; }
+
+.login .status { margin-top: 16px; }
+
+/* ---------- Signed-in user ---------- */
+.user-chip {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--teal);
+  box-shadow: 0 0 10px rgba(0, 229, 212, 0.6);
+}
+
+.user-name { font-weight: 700; color: var(--text); }
+
+.btn-small { padding: 6px 12px; font-size: 0.85rem; }
+
+.welcome {
+  margin: 12px 0 0;
+  text-align: center;
+  font-family: "Pacifico", cursive;
+  font-size: 1.5rem;
+  color: var(--sun);
+  text-shadow: 0 0 10px rgba(255, 140, 66, 0.8);
+}
