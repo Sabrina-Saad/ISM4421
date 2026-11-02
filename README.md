@@ -1,7 +1,7 @@
 # Sunshine State Weather 🌴
 
 A retro Florida / Miami-themed weather app, defaulting to **Boca Raton, FL** (home of FAU).
-It uses the free [Open-Meteo](https://open-meteo.com/) APIs, so there are no API keys, logins, or backend.
+It uses the free [Open-Meteo](https://open-meteo.com/) APIs for weather and [Supabase Auth](https://supabase.com/docs/guides/auth) for **Continue with Google** sign-in.
 
 ## Features
 - Current conditions: temperature, feels-like, humidity, wind, rain chance, UV index, sunrise/sunset
@@ -16,8 +16,18 @@ It uses the free [Open-Meteo](https://open-meteo.com/) APIs, so there are no API
 | `index.html` | Page markup |
 | `styles.css` | Retro Miami theme (neon sunset, palm trees, synth grid) |
 | `app.js` | Fetches and renders weather data |
+| `auth.js` | Google sign-in via Supabase; shows the user's name and profile picture |
+| `config.js` | Supabase project URL and public anon key |
 | `favicon.svg` | Sunset icon |
 | `netlify.toml` | Netlify config (publish directory, security headers) |
+
+## Google sign-in setup
+1. **Google Cloud Console → APIs & Services → Credentials**: create an OAuth client ID (Web application) and add
+   `https://rruqdcjknsafrlajnygw.supabase.co/auth/v1/callback` as an **Authorized redirect URI**.
+2. **Supabase → Authentication → Sign In / Providers → Google**: enable it and paste the Google client ID and secret.
+3. **Supabase → Authentication → URL Configuration**: set the **Site URL** to your Netlify URL and add it (plus
+   `http://localhost:8000` for local testing) to **Redirect URLs**.
+4. Put your project's **anon / publishable** key in `config.js` (Project Settings → API). Never use the service_role key.
 
 ## Run locally
 It's a plain static site, with no build step:
