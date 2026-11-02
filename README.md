@@ -27,7 +27,7 @@ It uses the free [Open-Meteo](https://open-meteo.com/) APIs for weather and [Sup
 2. **Supabase → Authentication → Sign In / Providers → Google**: enable it and paste the Google client ID and secret.
 3. **Supabase → Authentication → URL Configuration**: set the **Site URL** to your Netlify URL and add it (plus
    `http://localhost:8000` for local testing) to **Redirect URLs**.
-4. Put your project's **anon / publishable** key in `config.js` (Project Settings → API). Never use the service_role key.
+4. `config.js` already holds this project's public **anon** key. If you rotate it, update it there (Project Settings → API). Never use the service_role key.
 
 ## Run locally
 It's a plain static site, with no build step:
